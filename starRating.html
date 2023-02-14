@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #main{
+            border:20px solid rgb(22, 216, 70);
+            border-radius: 20px;
+            width: 40%;
+            margin-left: 30%;
+            margin-top: 10%;
+        }
+        #main p{
+            text-align: center;
+        }
+        li{
+            color:gray;
+            transform: scale(2);
+           
+            
+        }
+        li{
+           
+            list-style-type: none;
+            display: flex;
+            float: left;
+            margin-right: 20px;
+        }
+        ul{
+           margin:0 auto;
+           padding:10px;
+           display: flex;
+           justify-content: center;
+        }
+        .color{
+            color: rgb(243, 240, 66);
+        }
+        .clicked{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul id="stars">
+            <li> <i class="fa fa-star fa-fw star"></i> </li>
+            <li> <i class="fa fa-star fa-fw star"></i> </li>
+            <li> <i class="fa fa-star fa-fw star"></i> </li>
+            <li> <i class="fa fa-star fa-fw star"></i> </li>
+            <li> <i class="fa fa-star fa-fw star"></i> </li>
+        </ul>
+        <p>Rate your overall experience!!</p>
+    </div>
+<script src="jquery.js"></script>
+<script>
+    $("li").mouseover(function(){
+
+        let loc=$(this);
+
+       $("li").each(function(index){
+        $(this).addClass("color");
+        if(loc.index()==index){ 
+           return false;
+        }
+       });
+    });
+    $("li").mouseleave(function(){
+        $("li").removeClass("color");
+       });
+
+    $("li").click(function(){
+        $("li").removeClass("clicked");
+        $(".color").addClass("clicked");
+        $("p").text("You rate "+$(".color").length+ " stars!");
+
+    });
+</script>
+</body>
+</html>

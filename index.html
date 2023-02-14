@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search bar</title>
+    <style>
+        .highlight{
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    Search <input type="text" id="search">
+
+    <div class="container" id="parent">
+    <div id="main">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium facere. Ut, recusandae! Voluptates,
+            magnam quo ratione natus obcaecati libero, optio nulla nemo, qui nobis modi iure dignissimos! Fugiat,
+            similique.</p>
+    </div>
+    <div id="main">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium facere. Ut, recusandae! Voluptates,
+            magnam quo ratione natus obcaecati libero, optio nulla nemo, qui nobis modi iure dignissimos! Fugiat,
+            similique.</p>
+    </div>
+    <div id="main">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium facere. Ut, recusandae! Voluptates,
+            magnam quo ratione natus obcaecati libero, optio nulla nemo, qui nobis modi iure dignissimos! Fugiat,
+            similique.</p>
+    </div>
+    <div id="main">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium facere. Ut, recusandae! Voluptates,
+            magnam quo ratione natus obcaecati libero, optio nulla nemo, qui nobis modi iure dignissimos! Fugiat,
+            similique.</p>
+    </div>
+</div>
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+           let content=$("#main").text();
+           $("#search").keyup(function(){
+             searchText= $(this).val();
+             findText(searchText);
+             
+           });
+    function findText(searchText){
+        if(searchText){
+
+            let regEx=new RegExp(searchText,"ig");
+            let match=content.match(regEx);
+            if(match){
+                $("p").html(content.replace(regEx,function(match){
+                    return "<span class='highlight'>" + match + "</span>";
+                }));
+            }
+          else  {
+            $("span").removeClass("highlight");
+            }
+        }
+        else  {
+            $("span").removeClass("highlight");
+            }
+    }
+           
+            
+        });
+    </script>
+</body>
+
+</html>

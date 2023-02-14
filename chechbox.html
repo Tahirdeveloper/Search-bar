@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check box test</title>
+</head>
+<body>
+    <div>
+     
+        All<input type="checkbox" id="all"><br>
+          A <input type="checkbox" id="A"><br>
+          B <input type="checkbox" id="B"><br>
+          C <input type="checkbox" id="C"><br>
+          D <input type="checkbox" id="D"><br>
+          E <input type="checkbox" id="E"><br>
+          F <input type="checkbox" id="F">
+
+
+    </div>
+ <script src="jquery.js"></script>  
+ <script>
+    $(function(){
+
+        // $("#all").click(function(){
+
+            //     $(":not(#all)").prop("checked",$("#all").is(":checked"));
+            //     // $("input[type=checkbox]").prop("checked",$(this).is(":checked")); this is also work
+            //     $(this).addClass("clicked");
+            // });
+        $("#all").click(function(){
+        $(":not(#all)").click(function(){
+        if($(this).is(":checked")){
+            $(this).addClass("clicked");
+        }
+        else{
+            $(this).removeClass("clicked");
+            }
+        });
+        $(":not(.clicked)").prop("checked",$("#all").is(":checked"));
+        });
+    }); 
+ </script>
+ </body>
+</html>
